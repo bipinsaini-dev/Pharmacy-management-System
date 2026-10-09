@@ -1,0 +1,90 @@
+/* PharmaCare - healthcare theme */
+:root {
+  --pc-primary: #0d9488;
+  --pc-primary-dark: #0f766e;
+  --pc-sidebar: #0b3b3a;
+  --pc-bg: #f3f7f8;
+  --bs-primary: #0d9488;
+  --bs-primary-rgb: 13, 148, 136;
+  --bs-link-color: #0f766e;
+  --bs-link-hover-color: #115e59;
+}
+body { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif; background: var(--pc-bg); color: #1f2937; }
+.btn-primary { --bs-btn-bg: var(--pc-primary); --bs-btn-border-color: var(--pc-primary); --bs-btn-hover-bg: var(--pc-primary-dark);
+  --bs-btn-hover-border-color: var(--pc-primary-dark); --bs-btn-active-bg: var(--pc-primary-dark); --bs-btn-active-border-color: var(--pc-primary-dark);
+  --bs-btn-disabled-bg: var(--pc-primary); --bs-btn-disabled-border-color: var(--pc-primary); }
+.btn-outline-primary { --bs-btn-color: var(--pc-primary-dark); --bs-btn-border-color: var(--pc-primary); --bs-btn-hover-bg: var(--pc-primary);
+  --bs-btn-hover-border-color: var(--pc-primary); --bs-btn-active-bg: var(--pc-primary); --bs-btn-active-border-color: var(--pc-primary); }
+.form-control:focus, .form-select:focus { border-color: var(--pc-primary); box-shadow: 0 0 0 .2rem rgba(13,148,136,.2); }
+.text-bg-primary { background-color: var(--pc-primary) !important; }
+
+/* layout */
+.app-shell { display: flex; min-height: 100vh; }
+.sidebar { width: 250px; background: var(--pc-sidebar); color: #cde7e4; position: fixed; inset: 0 auto 0 0; z-index: 1040;
+  display: flex; flex-direction: column; overflow-y: auto; transition: transform .25s ease; }
+.sidebar .brand { display: flex; align-items: center; gap: .6rem; padding: 1.25rem 1.5rem; font-size: 1.35rem; font-weight: 700; color: #fff; text-decoration: none; }
+.sidebar .brand i { color: #5eead4; font-size: 1.6rem; }
+.sidebar .nav-link { color: #b9d9d6; padding: .65rem 1.5rem; display: flex; align-items: center; gap: .75rem; border-left: 3px solid transparent; }
+.sidebar .nav-link:hover { background: rgba(255,255,255,.07); color: #fff; }
+.sidebar .nav-link.active { background: rgba(94,234,212,.14); color: #fff; border-left-color: #5eead4; font-weight: 600; }
+.sidebar .nav-section { text-transform: uppercase; font-size: .7rem; letter-spacing: .08em; color: #6fa6a2; padding: 1rem 1.5rem .3rem; }
+.sidebar-backdrop { display: none; }
+.app-main { margin-left: 250px; flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.topbar { display: flex; align-items: center; gap: .75rem; background: #fff; padding: .7rem 1.5rem; border-bottom: 1px solid #e5eaee; position: sticky; top: 0; z-index: 1020; }
+.page-title { font-size: 1.2rem; font-weight: 700; margin: 0; }
+.user-chip { display: flex; align-items: center; gap: .6rem; text-decoration: none; color: inherit; line-height: 1.15; }
+.avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--pc-primary); color: #fff; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; }
+.content { padding: 1.5rem; flex: 1; }
+.app-footer { text-align: center; color: #94a3b8; font-size: .8rem; padding: 1rem; }
+
+@media (max-width: 991.98px) {
+  .sidebar { transform: translateX(-100%); }
+  .sidebar.open { transform: none; box-shadow: 0 0 40px rgba(0,0,0,.35); }
+  .sidebar-backdrop.show { display: block; position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 1030; }
+  .app-main { margin-left: 0; }
+  .content { padding: 1rem; }
+}
+
+/* cards */
+.card { border: 0; border-radius: .9rem; box-shadow: 0 1px 3px rgba(15,23,42,.08); }
+.card-header { background: #fff; font-weight: 600; border-bottom: 1px solid #eef2f5; padding: .9rem 1.25rem; border-radius: .9rem .9rem 0 0 !important; }
+.table > :not(caption) > * > * { padding: .7rem .85rem; }
+.table thead th { font-size: .78rem; text-transform: uppercase; letter-spacing: .03em; color: #64748b; white-space: nowrap; }
+.detail-list dt { color: #64748b; font-weight: 500; }
+
+/* dashboard */
+.stat-card { display: flex; align-items: center; gap: 1rem; background: #fff; border-radius: .9rem; padding: 1.1rem 1.25rem;
+  box-shadow: 0 1px 3px rgba(15,23,42,.08); text-decoration: none; color: inherit; height: 100%; transition: transform .15s, box-shadow .15s; }
+.stat-card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(15,23,42,.12); color: inherit; }
+.stat-icon { width: 48px; height: 48px; border-radius: .8rem; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: #fff; flex-shrink: 0; }
+.bg-teal { background: #0d9488; } .bg-blue { background: #2563eb; } .bg-violet { background: #7c3aed; } .bg-green { background: #16a34a; }
+.bg-amber { background: #f59e0b; } .bg-red { background: #dc2626; } .bg-orange { background: #ea580c; }
+.stat-label { font-size: .8rem; color: #64748b; }
+.stat-value { font-size: 1.45rem; font-weight: 700; line-height: 1.2; }
+.chart-box { position: relative; height: 280px; }
+.quick-start { background: linear-gradient(120deg, #ccfbf1, #e0f2fe); }
+
+/* billing */
+.totals .list-group-item { background: #f8fafc; }
+
+/* auth + error pages */
+.auth-body { background: linear-gradient(135deg, #0b3b3a 0%, #0d9488 55%, #5eead4 100%); min-height: 100vh; }
+.auth-wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
+.auth-card { background: #fff; border-radius: 1.1rem; padding: 2rem; width: 100%; max-width: 480px; box-shadow: 0 20px 50px rgba(0,0,0,.25); }
+.auth-brand { font-size: 1.8rem; font-weight: 800; color: var(--pc-primary-dark); text-align: center; }
+.auth-brand i { color: var(--pc-primary); }
+.error-icon { font-size: 3.5rem; color: var(--pc-primary); }
+
+/* invoice */
+.invoice { background: #fff; border-radius: .9rem; padding: 2rem; box-shadow: 0 1px 3px rgba(15,23,42,.08); max-width: 900px; }
+.invoice-brand { font-size: 1.7rem; font-weight: 800; color: var(--pc-primary-dark); }
+
+/* printing: only the .print-area is printed */
+@media print {
+  body * { visibility: hidden; }
+  .print-area, .print-area * { visibility: visible; }
+  .print-area { position: absolute; left: 0; top: 0; width: 100%; box-shadow: none !important; max-width: none; }
+  .no-print, .sidebar, .topbar, .app-footer { display: none !important; }
+  .app-main { margin: 0; }
+  body { background: #fff; }
+}
